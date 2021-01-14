@@ -9,6 +9,8 @@ public:
 	Asteroid(Shader &shader, Camera &camera);
 	Asteroid();
 	void render();
+	int tick();
+	int checkCollisions();
 };
 
 #endif ASTEROID_H

@@ -596,7 +596,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glad/include/glad/glad.h>
+#include <glad/glad.h>
 
 static void* get_proc(const char *namez);
 
@@ -862,7 +862,7 @@ PFNGLUNIFORMMATRIX4X3FVPROC glad_glUniformMatrix4x3fv;
 PFNGLUNIFORM3IPROC glad_glUniform3i;
 PFNGLCLEARBUFFERFVPROC glad_glClearBufferfv;
 PFNGLPROGRAMUNIFORM1UIPROC glad_glProgramUniform1ui;
-PFNGLBLENDEQUATIONSEPARATEIPROC glad_glBlendEquationSeparatei;
+PFNGLBLENDEQUATIONSEPARATEPROC glad_glBlendEquationSeparatei;
 PFNGLUNIFORM3DPROC glad_glUniform3d;
 PFNGLUNIFORM3FPROC glad_glUniform3f;
 PFNGLVERTEXATTRIB4UBVPROC glad_glVertexAttrib4ubv;
@@ -932,7 +932,7 @@ PFNGLBEGINQUERYINDEXEDPROC glad_glBeginQueryIndexed;
 PFNGLPOINTPARAMETERIVPROC glad_glPointParameteriv;
 PFNGLENABLEPROC glad_glEnable;
 PFNGLGETACTIVEUNIFORMSIVPROC glad_glGetActiveUniformsiv;
-PFNGLBLENDEQUATIONIPROC glad_glBlendEquationi;
+PFNGLBLENDEQUATIONPROC glad_glBlendEquationi;
 PFNGLGETATTRIBLOCATIONPROC glad_glGetAttribLocation;
 PFNGLVERTEXATTRIB4DVPROC glad_glVertexAttrib4dv;
 PFNGLGETPROGRAMINTERFACEIVPROC glad_glGetProgramInterfaceiv;
@@ -1297,7 +1297,7 @@ PFNGLVERTEXP3UIVPROC glad_glVertexP3uiv;
 PFNGLBINDATTRIBLOCATIONPROC glad_glBindAttribLocation;
 PFNGLUNIFORMMATRIX4X2FVPROC glad_glUniformMatrix4x2fv;
 PFNGLUNIFORMMATRIX2DVPROC glad_glUniformMatrix2dv;
-PFNGLBLENDFUNCIPROC glad_glBlendFunci;
+PFNGLBLENDFUNCPROC glad_glBlendFunci;
 PFNGLVERTEXATTRIB1DVPROC glad_glVertexAttrib1dv;
 PFNGLDRAWRANGEELEMENTSPROC glad_glDrawRangeElements;
 PFNGLGETQUERYOBJECTUIVPROC glad_glGetQueryObjectuiv;
@@ -1306,7 +1306,7 @@ PFNGLBUFFERSUBDATAPROC glad_glBufferSubData;
 PFNGLVERTEXATTRIB4IVPROC glad_glVertexAttrib4iv;
 PFNGLMAPBUFFERRANGEPROC glad_glMapBufferRange;
 PFNGLFRAMEBUFFERTEXTUREPROC glad_glFramebufferTexture;
-PFNGLBLENDFUNCSEPARATEIPROC glad_glBlendFuncSeparatei;
+PFNGLBLENDFUNCSEPARATEPROC glad_glBlendFuncSeparatei;
 PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC glad_glProgramUniformMatrix4x2fv;
 PFNGLVERTEXATTRIBL1DPROC glad_glVertexAttribL1d;
 PFNGLMULTIDRAWARRAYSPROC glad_glMultiDrawArrays;

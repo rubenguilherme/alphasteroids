@@ -11,7 +11,7 @@ uniform mat4 trans;
 out vec3 fragmentColor;
 
 void main() {
-	gl_Position = mvp * trans * vec4(vertexPosition, 1.0);
+	gl_Position = mvp * vec4(vertexPosition, 1.0);
 
 	// the vertex shader just passes the color to fragment shader
 	fragmentColor = vertexColor; 

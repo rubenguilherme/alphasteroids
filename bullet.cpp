@@ -7,7 +7,7 @@ Bullet::Bullet(Shader& shader, Camera& camera, glm::vec3 movVector, GAMEOBJECTS&
 	this->objectSet = &objectSet;
 	velocity = 0.05f;
 	position = camera.Position + glm::vec3(0.0f, -1.0f, 0.0f);
-	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "objects/bullet.obj");
+	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "/Users/pauloduarte/Documents/cg_project/cg_project/objects/bullet.obj");
 }
 
 Bullet::Bullet() {}
