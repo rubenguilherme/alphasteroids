@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <glad/include/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -11,6 +11,7 @@
 #include <learnopengl/camera.h>
 #include <learnopengl/model.h>
 #include <game.hpp>
+#include <text_renderer.hpp>
 
 #include <iostream>
 
@@ -35,6 +36,7 @@ float lastFrame = 0.0f;
 float ang = 0.0f;
 
 Game game;
+TextRenderer text;
 
 int main()
 {
@@ -77,7 +79,14 @@ int main()
     // configure global opengl state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
-
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    Shader shader;
+    shader.compileShader("/Users/pauloduarte/Documents/cg_project/cg_project/shaders/text.vs", "/Users/pauloduarte/Documents/cg_project/cg_project/shaders/text.fs");
+    text.setupShader(shader, SCR_WIDTH, SCR_HEIGHT);
+    text.loadFont();
     // draw in wireframe
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -102,7 +111,7 @@ int main()
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         game.render();
-
+        text.render(shader, "Pontuation: " + std::to_string(45), 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
