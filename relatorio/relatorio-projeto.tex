@@ -132,27 +132,15 @@ Dezembro\fi de \number \year}
 
 \tableofcontents
 
-\clearpage{\thispagestyle{empty}\cleardoublepage}
-
-\listoffigures
-
-% #   ATENÇÃO
-% Se não existirem tabelas, comentar as duas linhas seguintes
-\clearpage{\thispagestyle{empty}\cleardoublepage}
-\listoftables
+\clearpage{\thispagestyle{empty}\clearpage
 
 % #   ATENÇÃO
 % Se existirem trechos de código, descomentar as seguintes linhas
 % \clearpage{\thispagestyle{empty}\cleardoublepage}
 % \lstlistoflistings
 
-\clearpage{\thispagestyle{empty}\cleardoublepage}
-\include{acronimos}
-
 % \clearpage{\pagestyle{empty}\cleardoublepage}
 % \include{glossario}
-
-\clearpage{\thispagestyle{empty}\cleardoublepage}
 
 \mainmatter
 \acresetall
@@ -162,9 +150,12 @@ Dezembro\fi de \number \year}
 \clearpage{\thispagestyle{empty}\cleardoublepage}
 \include{capitulo-3}
 \clearpage{\thispagestyle{empty}\cleardoublepage}
+\include{capitulo-4}
+\clearpage{\thispagestyle{empty}\cleardoublepage}
 \include{conc-trab-futuro}
 \clearpage{\thispagestyle{empty}\cleardoublepage}
-
+\include{bibliografia}
+\clearpage{\thispagestyle{empty}\cleardoublepage}
 % SE EXISTIREM APENDICES, DESCOMENTAR O QUE ESTÁ EM BAIXO
 % \appendix
 % \include{apendice1}
@@ -177,8 +168,5 @@ Dezembro\fi de \number \year}
 % \clearpage{\pagestyle{empty}\cleardoublepage}
 
 \backmatter
-
-\bibliographystyle{unsrt}
-\bibliography{bibliografia}
 
 \end{document}
