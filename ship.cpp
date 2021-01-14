@@ -3,7 +3,7 @@
 Ship::Ship(Shader &shader, Camera &camera) {
 	this->shader = &shader;
 	this->camera = &camera;
-	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera),"objects/ship.obj");
+	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera),"/Users/pauloduarte/Documents/cg_project/cg_project/objects/ship.obj");
 }
 
 Ship::Ship() {}

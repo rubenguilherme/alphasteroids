@@ -11,7 +11,7 @@ Game::Game(Camera& camera) {
 Game::Game() {}
 
 void Game::init() {
-	shader.compileShader("shaders/vertex_shader.vs", "shaders/fragment_shader.fs");
+	shader.compileShader("/Users/pauloduarte/Documents/cg_project/cg_project/shaders/vertex_shader.vs", "/Users/pauloduarte/Documents/cg_project/cg_project/shaders/fragment_shader.fs");
 	//cross.compileShader("shaders/SimpleVertexShader.vs", "shaders/SimpleFragmentShader.fs");
 }
 
