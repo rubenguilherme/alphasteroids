@@ -11,8 +11,8 @@ public:
 	void render();
 	int tick();
 	int checkCollisions();
-private:
-
+	int checkProximityWithSphere();
+	int healthpoints;
 };
 
 #endif SHIP_H

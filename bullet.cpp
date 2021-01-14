@@ -5,8 +5,8 @@ Bullet::Bullet(Shader& shader, Camera& camera, glm::vec3 movVector, GAMEOBJECTS&
 	this->camera = &camera;
 	this->movVector = movVector;
 	this->objectSet = &objectSet;
-	velocity = 0.05f; //*100
-	position = camera.Position + glm::vec3(0.0f, -1.0f, 0.0f);
+	velocity = 0.2f;
+	position = camera.Position + camera.Front + camera.Front;
 	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "objects/bullet.obj");
 	objectType = "bullet";
 	deleteFlag = 0;

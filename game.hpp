@@ -8,6 +8,7 @@
 #include <crosshair.h>
 #include <ship.hpp>
 #include <bullet.hpp>
+#include <text_renderer.hpp>
 
 enum GameState
 {
@@ -32,11 +33,16 @@ private:
     int mouseClick;
     Shader cross = Shader();
     Shader shader = Shader();
-    SpriteRenderer background;
+    Shader text = Shader();
+    SpriteRenderer background, menu_background;
+    TextRenderer textRenderer;
     Camera* camera;
     Ship* ship;
     GAMEOBJECTS objectSet;
     LevelLoader ll;
+    int score;
+    int difficulty;
+    int warningFlag;
 };
 
 #endif GAME_H

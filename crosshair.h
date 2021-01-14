@@ -6,32 +6,30 @@
 #include <GLFW/glfw3.h>
 
 // Vertex array object (VAO)
-static GLuint VAID;
+static GLuint crossVAID;
 
-// Vertex buffer object (VBO)
-static GLuint vb;
+// Vertex buffer object (crossVBO)
+static GLuint crossVB;
 
-// color buffer object (CBO)
-static GLuint cb;
+// color buffer object (crossCBO)
+static GLuint crossCB;
 
 static int bufferFlag = 1;
 
-static void renderCrosshair();
+static void renderCrosshair(Shader& cross);
 static void drawCross();
 
 static void renderCrosshair(Shader& cross) {
-
     cross.use();
     glm::mat4 mvp = glm::ortho(-40.0f, 40.0f, -40.0f, 40.0f);
     cross.setMat4("mvp", mvp);
     if (bufferFlag) {
-        glGenVertexArrays(1, &VAID);
-        
-        glGenBuffers(1, &vb);
-        glGenBuffers(1, &cb);
+        glGenVertexArrays(1, &crossVAID);
+        glGenBuffers(1, &crossVB);
+        glGenBuffers(1, &crossCB);
         bufferFlag = 0;
     }
-    glBindVertexArray(VAID);
+    glBindVertexArray(crossVAID);
 
 	static const GLfloat g_vertex_buffer_data[] = {
 		-2.0f, 0.0f, 0.0f,
@@ -40,19 +38,19 @@ static void renderCrosshair(Shader& cross) {
 		0.0f, 2.0f, 0.0f
 	};
 	static const GLfloat g_color_buffer_data[] = {
-		0.0f,  1.0f,  0.0f,
-		0.0f,  1.0f,  0.0f,
-		0.0f,  1.0f,  0.0f,
-		0.0f,  1.0f,  0.0f,
+		1.0f,  1.0f,  0.0f,
+		1.0f,  1.0f,  0.0f,
+		1.0f,  1.0f,  0.0f,
+		1.0f,  1.0f,  0.0f
 	};
 		    
-	// The following commands will talk about our 'vb' buffer
-	glBindBuffer(GL_ARRAY_BUFFER, vb);
+	// The following commands will talk about our 'crossVB' buffer
+	glBindBuffer(GL_ARRAY_BUFFER, crossVB);
 	// Give our vertices to OpenGL.
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 		
-	// Move color data to video memory; specifically to CBO called cb
-	glBindBuffer(GL_ARRAY_BUFFER, cb);
+	// Move color data to video memory; specifically to crossCBO called crossCB
+	glBindBuffer(GL_ARRAY_BUFFER, crossCB);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
 
     drawCross();
@@ -63,7 +61,7 @@ static void drawCross()
 
     // 1rst attribute buffer : vertices
     glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, vb);
+    glBindBuffer(GL_ARRAY_BUFFER, crossVB);
     glVertexAttribPointer(
         0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
         3,                  // size
@@ -75,7 +73,7 @@ static void drawCross()
 
     // 2nd attribute buffer : colors
     glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, cb);
+    glBindBuffer(GL_ARRAY_BUFFER, crossCB);
     glVertexAttribPointer(
         1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
         3,                                // size

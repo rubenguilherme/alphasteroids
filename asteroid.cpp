@@ -1,11 +1,13 @@
 #include <asteroid.hpp>
 
-Asteroid::Asteroid(Shader &shader, Camera &camera, GAMEOBJECTS& objectSet) {
+Asteroid::Asteroid(Shader &shader, Camera &camera, GAMEOBJECTS& objectSet, glm::vec3 movVector, glm::vec3 position, float velocity) {
 	this->shader = &shader;
 	this->camera = &camera;
 	this->objectSet = &objectSet;
-	position = glm::vec3(8.0f,0.0f,-8.0f);
-	spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "objects/asteroid.obj");
+	this->movVector = movVector;
+	this->position = position;
+	this->velocity = velocity;
+	spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "objects/asteroid1.obj");
 	objectType = "asteroid";
 	deleteFlag = 0;
 }
@@ -13,6 +15,7 @@ Asteroid::Asteroid(Shader &shader, Camera &camera, GAMEOBJECTS& objectSet) {
 Asteroid::Asteroid() {}
 
 void Asteroid::render() {
+	position += movVector * velocity;
 	spriterenderer.DrawSprite(position);
 }
 
@@ -28,8 +31,7 @@ int Asteroid::checkCollisions() {
 		if (sqrt(((*it)->position.x - position.x) * ((*it)->position.x - position.x) +
 			((*it)->position.y - position.y) * ((*it)->position.y - position.y) +
 			((*it)->position.z - position.z) * ((*it)->position.z - position.z)) <= 1.3f + 5.0f) {
-			//TAKE DAMAGE
-			return 1;
+			return 3;
 		}
 	}
 	else if ((*it)->objectType == "asteroid" && (this != (*it))) {

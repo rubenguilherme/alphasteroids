@@ -1,7 +1,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 #include <game_object.hpp>
-#include <level_loader.hpp>
+#include <typedefs.h>
 
 class Bullet : public GameObject
 {
@@ -12,8 +12,8 @@ public:
 	int tick();
 	int checkCollisions();
 	int checkAsteroidCollision();
+	GAMEOBJECTS* objectSet;
 private:
-	GAMEOBJECTS * objectSet;
 	glm::vec3 movVector;
 	float velocity;
 };

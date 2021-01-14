@@ -29,19 +29,14 @@ void SpriteRenderer::DrawSprite(glm::vec3 position, glm::vec3 scale, GLfloat Yaw
     glm::mat4 modelMat = glm::mat4(1.0f);
     modelMat = glm::translate(modelMat, position);
 
-    //TO DO : Change it only for the ship
     if (Yaw != 0.0f) {
         modelMat = glm::translate(modelMat, glm::vec3(0.0f, 1.0f, 0.0f)); // we rotate to the camera position so it rotates like the camera
         modelMat = glm::rotate(modelMat, Yaw, glm::vec3(0.0f, 1.0f, 0.0f));
         modelMat = glm::rotate(modelMat, Pitch, glm::vec3(1.0f, 0.0f, 0.0f));
         modelMat = glm::translate(modelMat, glm::vec3(0.0f, -1.0f, 0.0f)); // after rotating we go back to the place we were
     }
-    
-    
-    //modelMat = glm::rotate(modelMat,Roll, glm::vec3(0.0f, 0.0f, 1.0f));
     modelMat = glm::scale(modelMat, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
     shader->setMat4("model", modelMat);
-    //std::cout << &model << std::endl;
     model.Draw(*shader);
 }
 

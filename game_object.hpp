@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include <sprite_renderer.hpp>
+#include <math.h>
 
 class GameObject {
 public:
@@ -9,11 +10,13 @@ public:
 	virtual void render() = 0;
 	virtual int tick() = 0;
 	virtual int checkCollisions() = 0;
+
 	int checkCollisionWithSphere();
 	glm::vec3 getPos();
-		
-protected:
+	const char* objectType;
 	glm::vec3 position;
+	int deleteFlag;
+protected:
 	SpriteRenderer spriterenderer;
 	Camera * camera;
 	Shader * shader;

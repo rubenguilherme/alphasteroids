@@ -1,12 +1,9 @@
 #ifndef LEVEL_LOADER_H
 #define LEVEL_LOADER_H
-#include <vector>
-#include <game_object.hpp>
+#include <typedefs.h>
 #include <learnopengl/camera.h>
 #include <learnopengl/shader_m.h>
 #include <ship.hpp>
-
-typedef std::vector<GameObject*> GAMEOBJECTS;
 
 class LevelLoader
 {
@@ -15,7 +12,10 @@ public:
 	LevelLoader(GAMEOBJECTS& go, Shader& shader, Camera& camera);
 	LevelLoader();
 	Ship * getShip();
+	void addDifficulty();
 private:
+	float velocity;
+	int difficulty;
 	GAMEOBJECTS* objectSet;
 	Shader* shader;
 	Camera* camera;
