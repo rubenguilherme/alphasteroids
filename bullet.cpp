@@ -5,9 +5,11 @@ Bullet::Bullet(Shader& shader, Camera& camera, glm::vec3 movVector, GAMEOBJECTS&
 	this->camera = &camera;
 	this->movVector = movVector;
 	this->objectSet = &objectSet;
-	velocity = 0.05f;
+	velocity = 0.05f; //*100
 	position = camera.Position + glm::vec3(0.0f, -1.0f, 0.0f);
 	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera), "objects/bullet.obj");
+	objectType = "bullet";
+	deleteFlag = 0;
 }
 
 Bullet::Bullet() {}
@@ -24,11 +26,22 @@ int Bullet::tick() {
 int Bullet::checkCollisions() {
 	if (checkCollisionWithSphere())
 		return 1;
-
-	return 0;
+	return (checkAsteroidCollision());
 }
 
 int Bullet::checkAsteroidCollision()
 {
+	for (GAMEOBJECTS::iterator it = objectSet->begin(); it != objectSet->end(); ++it)
+		if ((*it)->objectType == "asteroid") {
+			if (sqrt(((*it)->position.x - position.x) * ((*it)->position.x - position.x) +
+				((*it)->position.y - position.y) * ((*it)->position.y - position.y) +
+				((*it)->position.z - position.z) * ((*it)->position.z - position.z)) <= 1.3f + 0.1f) 
+			{
+				objectSet->erase(it);
+				deleteFlag = 1;
+				return 2;
+			}
+		}
+
 	return 0;
 }

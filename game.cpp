@@ -1,5 +1,6 @@
 #include <game.hpp>
 #include <game_object.hpp>
+#include <asteroid.hpp>
 
 Game::Game(Camera& camera) {
 	this->camera = &camera;
@@ -21,10 +22,26 @@ void Game::init() {
 void Game::tick() {
 	int flag = 0;
 	for (GAMEOBJECTS::iterator it = objectSet.begin(); it != objectSet.end(); ++it) {
+		if (((*it)->objectType == "asteroid")) {
+			Asteroid* aux = dynamic_cast<Asteroid*>(*it);
+			if (aux->objectSet != &this->objectSet) {
+				aux->objectSet = &objectSet;
+			}
+		}
+		if ((*it)->deleteFlag) {
+			objectSet.erase(it);
+			break;
+		}
 		switch ((*it)->tick()) {
-		case 1: //if 1 is returned then we the object is destroyed
+		case 1: //if 1 is returned then the object is destroyed
 			flag = 1;
 			objectSet.erase(it);
+			break;
+		case 2: //if 2 is returned then 
+			it = objectSet.begin();
+			break;
+		case 3:
+			State = GAME_OVER;
 			break;
 		default: break;
 		}

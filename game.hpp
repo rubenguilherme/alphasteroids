@@ -4,6 +4,7 @@
 #include <learnopengl/shader_m.h>
 #include <sprite_renderer.hpp>
 #include <level_loader.hpp>
+#include <typedefs.h>
 #include <crosshair.h>
 #include <ship.hpp>
 #include <bullet.hpp>

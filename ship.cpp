@@ -4,6 +4,8 @@ Ship::Ship(Shader &shader, Camera &camera) {
 	this->shader = &shader;
 	this->camera = &camera;
 	this->spriterenderer = SpriteRenderer(*(this->shader), *(this->camera),"objects/ship.obj");
+	objectType = "ship";
+	deleteFlag = 0;
 }
 
 Ship::Ship() {}
@@ -14,12 +16,21 @@ void Ship::render() {
 
 int Ship::tick() {
 	position = camera->Position;
-	return 0;
+	return checkCollisions();
 }
 
 int Ship::checkCollisions() {
-	//if (checkCollisionWithSphere())
-		//TODO
-	//	;
+	if (checkCollisionWithSphere())
+		return 3;
+	if (checkProximityWithSphere())
+		//WARNING
+		std::cout << "OLA" << std::endl;
+	return 0;
+}
+
+int Ship::checkProximityWithSphere() {
+	if (position.x >= 400 || position.x <= -400) return 1;
+	if (position.y >= 400 || position.y <= -400) return 1;
+	if (position.z >= 400 || position.z <= -400) return 1;
 	return 0;
 }
