@@ -12,3 +12,14 @@ Asteroid::Asteroid() {}
 void Asteroid::render() {
 	spriterenderer.DrawSprite(position);
 }
+
+int Asteroid::tick() {
+	return checkCollisions();
+}
+
+int Asteroid::checkCollisions() {
+	if (checkCollisionWithSphere())
+		return 1;
+	//ASTEROID & SHIP
+	return 0;
+}

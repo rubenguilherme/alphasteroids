@@ -9,7 +9,8 @@ public:
 	Ship(Shader &shader, Camera &camera);
 	Ship();
 	void render();
-	
+	int tick();
+	int checkCollisions();
 private:
 
 };
