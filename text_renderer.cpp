@@ -26,7 +26,7 @@ void TextRenderer::loadFont() {
     }
 
     // find path to font
-    std::string font_name = "fonts/Herculanum.ttf";
+    std::string font_name = "/Users/pauloduarte/Documents/cg_project/cg_project/fonts/Herculanum.ttf";
     if (font_name.empty())
     {
         std::cout << "ERROR::FREETYPE: Failed to load font_name" << std::endl;
